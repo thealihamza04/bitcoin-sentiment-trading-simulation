@@ -11,6 +11,14 @@ COLAB (train)  ──model folder──▶  FASTAPI (inference + simulate)  ◀�
    cloud, once                         backend/ (this machine)              frontend/ (browser)
 ```
 
+## Quick start
+```bash
+./setup.sh    # one-time: create backend venv + install backend & frontend deps
+./run.sh      # start backend (:8000) and frontend (:5173) together
+```
+Then add the trained model to `backend/model/` (see below) and open
+http://localhost:5173.
+
 ## Repository layout
 ```
 .
