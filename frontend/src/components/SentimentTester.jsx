@@ -83,7 +83,8 @@ export default function SentimentTester() {
   return (
     <>
       <Button variant="outline" size="sm" className="gap-1.5" onClick={() => setOpen(true)}>
-        <MessageSquareText className="h-4 w-4" /> Sentiment tester
+        <MessageSquareText className="h-4 w-4" />
+        <span className="hidden sm:inline">Sentiment tester</span>
       </Button>
 
       <DialogStack open={open} onOpenChange={setOpen}>

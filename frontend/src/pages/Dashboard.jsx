@@ -48,7 +48,9 @@ export default function Dashboard() {
         <SentimentTester />
         <Badge variant="outline" className="gap-1.5">
           <CircleDot className={`h-3 w-3 ${modelLoaded ? "text-emerald-500" : "text-amber-500"}`} />
-          {health.isLoading ? "connecting…" : modelLoaded ? "model loaded" : "model not loaded"}
+          <span className="hidden sm:inline">
+            {health.isLoading ? "connecting…" : modelLoaded ? "model loaded" : "model not loaded"}
+          </span>
         </Badge>
       </Navbar>
 
