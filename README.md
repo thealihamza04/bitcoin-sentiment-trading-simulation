@@ -156,6 +156,11 @@ cd backend && python -m app.precompute
 
 ---
 
+## 🎤 Presenting / demo
+
+- **[docs/DEMO.md](docs/DEMO.md)** — a ~5-minute live demo script for first-time viewers (what to say, what to click, likely Q&A).
+- **[docs/SLIDES.md](docs/SLIDES.md)** — a slide deck in [Marp](https://marp.app) format. Export to PDF/PPTX with the "Marp for VS Code" extension or `marp docs/SLIDES.md --pdf`.
+
 ## 📄 License
 
 MIT — feel free to use, learn from, and build on this.
