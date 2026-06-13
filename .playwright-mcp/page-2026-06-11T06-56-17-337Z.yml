@@ -1,0 +1,71 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e10]: BTC Sentiment Sim
+      - navigation [ref=e11]:
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Training" [ref=e13] [cursor=pointer]:
+          - /url: /training
+        - link "Docs" [ref=e14] [cursor=pointer]:
+          - /url: /docs
+        - link "Case study" [ref=e15] [cursor=pointer]:
+          - /url: /case-study
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Model training simulation" [level=1] [ref=e18]
+      - paragraph [ref=e19]: A visualised FinBERT fine-tuning run — tune the hyperparameters and watch how the training behaves. (Simulated — no real training is performed.)
+    - generic [ref=e20]:
+      - complementary [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e24]:
+            - img [ref=e25]
+            - text: Training config
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - group [ref=e30]:
+                - generic [ref=e31]:
+                  - generic: Epochs
+                  - generic: "3"
+                  - slider [ref=e33]: "3"
+              - generic [ref=e34]:
+                - generic [ref=e35]:
+                  - generic [ref=e36]: Learning rate
+                  - generic [ref=e37]: sweet spot (case-study setup)
+                - generic [ref=e38]:
+                  - button "5e-6" [ref=e39]
+                  - button "2e-5" [ref=e40]
+                  - button "5e-5" [ref=e41]
+                  - button "1e-4" [ref=e42]
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e45]: Batch size
+                  - generic [ref=e46]: 272 steps/epoch
+                - generic [ref=e47]:
+                  - button "8" [ref=e48]
+                  - button "16" [ref=e49]
+                  - button "32" [ref=e50]
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - term [ref=e53]: Base model
+                - definition [ref=e54]: ProsusAI/finbert
+              - generic [ref=e55]:
+                - term [ref=e56]: Dataset
+                - definition [ref=e57]: Financial PhraseBank
+              - generic [ref=e58]:
+                - term [ref=e59]: Split
+                - definition [ref=e60]: 2,170 / 465 / 465
+              - generic [ref=e61]:
+                - term [ref=e62]: Optimizer
+                - definition [ref=e63]: AdamW · wd 0.01 · seed 42
+            - button "Start training" [ref=e64]:
+              - img
+              - text: Start training
+      - generic [ref=e67]:
+        - img [ref=e68]
+        - paragraph [ref=e76]: Tune the config and hit Start training.
+        - paragraph [ref=e77]: This replays a realistic fine-tuning curve for FinBERT on the Financial PhraseBank dataset — try a hot learning rate or extra epochs and watch the loss get noisy or overfit. The actual model was trained once in Colab.
+  - region "Notifications alt+T"

@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { CircleDot, Rocket } from "lucide-react";
+import { CircleDot, Rocket, ArrowRight, Trophy, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,38 +9,63 @@ import Navbar from "../components/Navbar";
 import Controls from "../components/Controls";
 import SentimentTester from "../components/SentimentTester";
 import MetricsCards from "../components/MetricsCards";
+import PipelineStatus from "../components/PipelineStatus";
 import EquityCurve from "../components/EquityCurve";
 import PriceChart from "../components/PriceChart";
 import SkeletonDashboard from "../components/SkeletonDashboard";
-import { useHealth, useSimulation } from "../hooks";
+import { useHealth, useSimulation, useDebounce } from "../hooks";
 
 const DEFAULT_PARAMS = {
-  threshold: 0.1,
-  smoothing_window: 3,
+  threshold: 0.10,
+  smoothing_window: 5,
   allow_short: false,
   initial_capital: 10000,
   transaction_cost_bps: 10,
 };
 
+const money = (x) => `$${Math.round(x).toLocaleString()}`;
+
+// One-line outcome: did following the model beat just holding?
+function Verdict({ result }) {
+  const { metrics, curve, params } = result;
+  if (!curve?.length) return null;
+  const s = metrics.strategy, b = metrics.buy_hold;
+  const beat = s.total_return >= b.total_return;
+  const pp = Math.abs((s.total_return - b.total_return) * 100).toFixed(1);
+  const last = curve[curve.length - 1];
+  return (
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border px-4 py-3 text-sm ${
+      beat ? "border-emerald-500/30 bg-emerald-500/5" : "border-rose-500/25 bg-rose-500/5"}`}>
+      {beat
+        ? <Trophy className="h-4 w-4 shrink-0 text-emerald-500" />
+        : <ShieldAlert className="h-4 w-4 shrink-0 text-rose-500" />}
+      <span className="font-medium">
+        {beat ? `Strategy beat Buy & Hold by ${pp}pp` : `Buy & Hold won by ${pp}pp`}
+      </span>
+      <span className="ml-auto font-mono text-xs tabular-nums text-muted-foreground">
+        {money(params.initial_capital)} → <span className="text-emerald-500">{money(last.equity)}</span> strategy
+        · {money(last.buy_hold_equity)} B&H
+      </span>
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const [params, setParams] = useState(DEFAULT_PARAMS);
+  const debouncedParams = useDebounce(params, 200);
   const health = useHealth();
-  const sim = useSimulation();
-  const autoRan = useRef(false);
-
-  const onRun = () =>
-    sim.mutate(params, { onError: (e) => toast.error(e.message) });
-
   const modelLoaded = health.data?.model_loaded;
+
+  // Auto-runs whenever (debounced) params change; previous result stays on screen.
+  const sim = useSimulation(debouncedParams, !!modelLoaded);
   const result = sim.data;
 
-  // Auto-run the default simulation once the model is ready → skeletons → results.
+  const reset = () => setParams(DEFAULT_PARAMS);
+
+  // Surface backend errors (e.g. model not loaded) without tearing down the UI.
   useEffect(() => {
-    if (modelLoaded && !autoRan.current) {
-      autoRan.current = true;
-      sim.mutate(DEFAULT_PARAMS, { onError: (e) => toast.error(e.message) });
-    }
-  }, [modelLoaded]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (sim.isError) toast.error(sim.error.message);
+  }, [sim.isError, sim.error]);
 
   return (
     <>
@@ -56,22 +81,28 @@ export default function Dashboard() {
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         <div className="mb-5">
-          <h1 className="text-xl font-semibold tracking-tight">Trading simulation</h1>
-          <p className="text-sm text-muted-foreground">
-            Fine-tuned FinBERT → daily signals → backtest vs buy-and-hold
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-xl font-semibold tracking-tight">Trading simulation</h1>
+            <Badge variant="outline" className="font-mono text-[10px]">BTC-USD · 2021–2023</Badge>
+          </div>
+          <p className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+            Fine-tuned FinBERT <ArrowRight className="h-3.5 w-3.5" /> daily signals
+            <ArrowRight className="h-3.5 w-3.5" /> backtest vs buy-and-hold
           </p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
-          <aside className="space-y-4">
-            <Controls params={params} setParams={setParams} onRun={onRun} loading={sim.isPending} />
+          <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+            <Controls params={params} setParams={setParams} onReset={reset} fetching={sim.isFetching} />
+            <PipelineStatus active={sim.isFetching && !!modelLoaded} />
           </aside>
 
           <main className="space-y-4">
-            {sim.isPending || health.isLoading || (modelLoaded && !result && !sim.isError) ? (
+            {health.isLoading || (modelLoaded && !result && !sim.isError) ? (
               <SkeletonDashboard />
             ) : result ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+                <Verdict result={result} />
                 <MetricsCards metrics={result.metrics} />
                 <Tabs defaultValue="equity">
                   <TabsList>
@@ -79,7 +110,7 @@ export default function Dashboard() {
                     <TabsTrigger value="price">Price &amp; sentiment</TabsTrigger>
                   </TabsList>
                   <TabsContent value="equity" className="mt-3">
-                    <EquityCurve curve={result.curve} />
+                    <EquityCurve curve={result.curve} initialCapital={result.params?.initial_capital} />
                   </TabsContent>
                   <TabsContent value="price" className="mt-3">
                     <PriceChart curve={result.curve} />

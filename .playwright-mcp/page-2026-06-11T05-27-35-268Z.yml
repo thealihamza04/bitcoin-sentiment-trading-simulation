@@ -1,0 +1,87 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: BTC Sentiment Sim
+        - navigation [ref=e11]:
+          - link "Dashboard" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Docs" [ref=e13] [cursor=pointer]:
+            - /url: /docs
+          - link "Case study" [ref=e14] [cursor=pointer]:
+            - /url: /case-study
+      - generic [ref=e15]:
+        - button "Sentiment tester" [ref=e16]:
+          - img
+          - generic [ref=e17]: Sentiment tester
+        - generic [ref=e18]:
+          - img
+          - generic [ref=e19]: model loaded
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - heading "Trading simulation" [level=1] [ref=e22]
+      - paragraph [ref=e23]:
+        - text: Fine-tuned FinBERT
+        - img [ref=e24]
+        - text: daily signals
+        - img [ref=e26]
+        - text: backtest vs buy-and-hold
+    - generic [ref=e28]:
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - text: Strategy
+            - img [ref=e34]
+          - generic [ref=e36]:
+            - group [ref=e37]:
+              - generic [ref=e38]:
+                - generic: Sentiment threshold
+                - generic: "0.10"
+                - slider [ref=e40]: "0.1"
+            - group [ref=e41]:
+              - generic [ref=e42]:
+                - generic: Smoothing window
+                - generic: 3 d
+                - slider [ref=e44]: "3"
+            - group [ref=e45]:
+              - generic [ref=e46]:
+                - generic: Transaction cost
+                - generic: 10 bps
+                - slider [ref=e48]: "10"
+            - generic [ref=e49]:
+              - generic [ref=e50]: Allow short positions
+              - switch [ref=e51]
+              - checkbox [ref=e52]
+            - generic [ref=e53]:
+              - generic [ref=e54]: Initial capital
+              - spinbutton [ref=e55]: "10000"
+            - paragraph [ref=e56]: Changes apply live as you adjust them.
+            - button "Reset to defaults" [ref=e57]:
+              - img
+              - text: Reset to defaults
+      - main [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - img [ref=e63]
+              - generic [ref=e66]: Sending data
+              - generic [ref=e67]: …
+            - img [ref=e68]
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - img [ref=e73]
+              - generic [ref=e85]: Model predicting
+            - img [ref=e86]
+          - generic [ref=e88]:
+            - generic [ref=e89]:
+              - img [ref=e91]
+              - generic [ref=e93]: Building signals
+            - img [ref=e94]
+          - generic [ref=e97]:
+            - img [ref=e99]
+            - generic [ref=e102]: Backtesting
+  - region "Notifications alt+T"

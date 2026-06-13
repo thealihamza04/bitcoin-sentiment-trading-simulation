@@ -1,0 +1,62 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e10]: BTC Sentiment Sim
+      - navigation [ref=e11]:
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Training" [ref=e13] [cursor=pointer]:
+          - /url: /training
+        - link "Docs" [ref=e14] [cursor=pointer]:
+          - /url: /docs
+        - link "Case study" [ref=e15] [cursor=pointer]:
+          - /url: /case-study
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "Model training simulation" [level=1] [ref=e18]
+      - paragraph [ref=e19]: A visualised FinBERT fine-tuning run — watch the loss fall and accuracy climb. (Simulated — no real training is performed.)
+    - generic [ref=e20]:
+      - complementary [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e24]:
+            - img [ref=e25]
+            - text: Training config
+          - generic [ref=e28]:
+            - group [ref=e30]:
+              - generic [ref=e31]:
+                - generic: Epochs
+                - generic: "3"
+                - slider [ref=e33]: "3"
+            - generic [ref=e34]:
+              - generic [ref=e35]:
+                - term [ref=e36]: Base model
+                - definition [ref=e37]: ProsusAI/finbert
+              - generic [ref=e38]:
+                - term [ref=e39]: Dataset
+                - definition [ref=e40]: Financial PhraseBank
+              - generic [ref=e41]:
+                - term [ref=e42]: Split
+                - definition [ref=e43]: 2,170 train · 465 val · 465 test
+              - generic [ref=e44]:
+                - term [ref=e45]: Max length
+                - definition [ref=e46]: 128 tokens
+              - generic [ref=e47]:
+                - term [ref=e48]: Batch size
+                - definition [ref=e49]: 8 (train) · 16 (eval)
+              - generic [ref=e50]:
+                - term [ref=e51]: Learning rate
+                - definition [ref=e52]: 2e-5 · AdamW (wd 0.01)
+              - generic [ref=e53]:
+                - term [ref=e54]: Seed
+                - definition [ref=e55]: "42"
+            - button "Start training" [ref=e56]:
+              - img
+              - text: Start training
+      - generic [ref=e59]:
+        - img [ref=e60]
+        - paragraph [ref=e68]: Set the number of epochs and hit Start training.
+        - paragraph [ref=e69]: This replays a realistic fine-tuning curve for FinBERT on the Financial PhraseBank dataset. It’s a simulation for demonstration — the actual model was trained once in Colab.
+  - region "Notifications alt+T"

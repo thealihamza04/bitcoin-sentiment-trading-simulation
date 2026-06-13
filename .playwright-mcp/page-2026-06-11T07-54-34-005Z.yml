@@ -1,0 +1,95 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e10]: BTC Sentiment Sim
+      - navigation [ref=e11]:
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "How it works" [ref=e13] [cursor=pointer]:
+          - /url: /how-it-works
+        - link "Training" [ref=e14] [cursor=pointer]:
+          - /url: /training
+        - link "Case study" [ref=e15] [cursor=pointer]:
+          - /url: /case-study
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - heading "How it works" [level=1] [ref=e18]
+      - paragraph [ref=e19]: Follow one headline through the whole machine — from the news to the final scoreboard. Press play and watch each step light up.
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: Step 0 · Pick a headline to send through the machine
+      - generic [ref=e23]:
+        - button "😊 Happy news Bitcoin surges to a new all-time high on heavy institutional buying." [ref=e24]:
+          - generic [ref=e25]: 😊
+          - generic [ref=e26]: Happy news
+          - generic [ref=e27]: Bitcoin surges to a new all-time high on heavy institutional buying.
+        - button "😟 Sad news Bitcoin plunges as regulators crack down on crypto exchanges." [ref=e28]:
+          - generic [ref=e29]: 😟
+          - generic [ref=e30]: Sad news
+          - generic [ref=e31]: Bitcoin plunges as regulators crack down on crypto exchanges.
+        - button "😐 Boring news Bitcoin trades sideways as traders await direction." [ref=e32]:
+          - generic [ref=e33]: 😐
+          - generic [ref=e34]: Boring news
+          - generic [ref=e35]: Bitcoin trades sideways as traders await direction.
+      - textbox "…or write your own headline" [ref=e36]: Bitcoin surges to a new all-time high on heavy institutional buying.
+      - generic [ref=e37]:
+        - button "Playing…" [disabled]:
+          - img
+          - text: Playing…
+        - button [ref=e133]:
+          - img
+    - list [ref=e39]:
+      - listitem [ref=e41]:
+        - img [ref=e43]
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - paragraph [ref=e50]: 1 · A news headline arrives
+            - paragraph [ref=e51]: Every day the computer reads crypto news — just like you read the morning headlines.
+          - generic [ref=e134]:
+            - paragraph [ref=e135]: 📰 Today's crypto news
+            - paragraph [ref=e136]: “Bitcoin surges to a new all-time high on heavy institutional buying.”
+      - listitem [ref=e53]:
+        - img [ref=e55]
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: 2 · The sentence is cut into little pieces
+            - paragraph [ref=e66]: Computers can't read whole sentences. They chop them into tiny word-pieces called tokens.
+          - generic [ref=e67]: …
+      - listitem [ref=e68]:
+        - img [ref=e70]
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - paragraph [ref=e77]: 3 · The robot brain reads the pieces
+            - paragraph [ref=e78]: A trained AI called FinBERT has read thousands of finance sentences, so it understands the mood of news.
+          - generic [ref=e79]: …
+      - listitem [ref=e80]:
+        - img [ref=e82]
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - paragraph [ref=e89]: 4 · The news gets a mood score
+            - paragraph [ref=e90]: The robot says how happy or sad the news is, as a number from −1 (very sad) to +1 (very happy).
+          - generic [ref=e91]: …
+      - listitem [ref=e92]:
+        - img [ref=e94]
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - paragraph [ref=e103]: "5 · The mood decides: buy or wait"
+            - paragraph [ref=e104]: Happy day → keep Bitcoin. Sad day → step aside and keep the money safe. Boring day → do the same as yesterday.
+          - generic [ref=e105]: …
+      - listitem [ref=e106]:
+        - img [ref=e108]
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: 6 · We test the idea with pretend money
+            - paragraph [ref=e116]: We replay this rule on 3 years of real Bitcoin prices — with pretend money, so nothing real is ever at risk.
+          - generic [ref=e117]: …
+      - listitem [ref=e118]:
+        - img [ref=e120]
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - paragraph [ref=e130]: 7 · The scoreboard
+            - paragraph [ref=e131]: Finally we compare with a friend who just held Bitcoin the whole time. That tells us if the robot really helps.
+          - generic [ref=e132]: …
+  - region "Notifications alt+T"

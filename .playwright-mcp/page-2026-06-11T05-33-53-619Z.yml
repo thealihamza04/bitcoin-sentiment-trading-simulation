@@ -1,0 +1,87 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: BTC Sentiment Sim
+        - navigation [ref=e11]:
+          - link "Dashboard" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Docs" [ref=e13] [cursor=pointer]:
+            - /url: /docs
+          - link "Case study" [ref=e14] [cursor=pointer]:
+            - /url: /case-study
+      - generic [ref=e15]:
+        - button "Sentiment tester" [ref=e16]:
+          - img
+          - generic [ref=e17]: Sentiment tester
+        - generic [ref=e18]:
+          - img
+          - generic [ref=e19]: model loaded
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - heading "Trading simulation" [level=1] [ref=e22]
+      - paragraph [ref=e23]:
+        - text: Fine-tuned FinBERT
+        - img [ref=e24]
+        - text: daily signals
+        - img [ref=e26]
+        - text: backtest vs buy-and-hold
+    - generic [ref=e28]:
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - text: Strategy
+            - img [ref=e34]
+          - generic:
+            - group [disabled]:
+              - generic:
+                - generic: Sentiment threshold
+                - generic: "0.10"
+                - generic:
+                  - slider [disabled]: "0.1"
+            - group [disabled]:
+              - generic:
+                - generic: Smoothing window
+                - generic: 3 d
+                - generic:
+                  - slider [disabled]: "3"
+            - group [disabled]:
+              - generic:
+                - generic: Transaction cost
+                - generic: 10 bps
+                - generic:
+                  - slider [disabled]: "10"
+            - generic:
+              - generic: Allow short positions
+              - switch [disabled]
+              - checkbox [disabled]
+            - generic:
+              - generic: Initial capital
+              - spinbutton [disabled]: "10000"
+            - paragraph: Changes apply live as you adjust them.
+            - button "Reset to defaults" [disabled]:
+              - img
+              - text: Reset to defaults
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - img [ref=e39]
+            - text: Running simulation…
+          - list [ref=e41]:
+            - listitem [ref=e42]:
+              - img [ref=e45]
+              - generic [ref=e48]: Sending data…
+            - listitem [ref=e49]:
+              - img [ref=e52]
+              - generic [ref=e64]: Model predicting
+            - listitem [ref=e65]:
+              - img [ref=e68]
+              - generic [ref=e70]: Building signals
+            - listitem [ref=e71]:
+              - img [ref=e74]
+              - generic [ref=e77]: Backtesting
+      - main [ref=e78]
+  - region "Notifications alt+T"

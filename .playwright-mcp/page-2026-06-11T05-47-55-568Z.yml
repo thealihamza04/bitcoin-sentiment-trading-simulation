@@ -1,0 +1,132 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: BTC Sentiment Sim
+        - navigation [ref=e11]:
+          - link "Dashboard" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Training" [ref=e13] [cursor=pointer]:
+            - /url: /training
+          - link "Docs" [ref=e14] [cursor=pointer]:
+            - /url: /docs
+          - link "Case study" [ref=e15] [cursor=pointer]:
+            - /url: /case-study
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - heading "Model training simulation" [level=1] [ref=e18]
+        - paragraph [ref=e19]: A visualised FinBERT fine-tuning run — watch the loss fall and accuracy climb. (Simulated — no real training is performed.)
+      - generic [ref=e20]:
+        - complementary [ref=e21]:
+          - generic [ref=e22]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - text: Training config
+            - generic [ref=e28]:
+              - generic:
+                - group:
+                  - generic:
+                    - generic: Epochs
+                    - generic: "3"
+                    - generic:
+                      - slider: "3"
+              - generic [ref=e34]:
+                - generic [ref=e35]:
+                  - term [ref=e36]: Base model
+                  - definition [ref=e37]: ProsusAI/finbert
+                - generic [ref=e38]:
+                  - term [ref=e39]: Dataset
+                  - definition [ref=e40]: Financial PhraseBank
+                - generic [ref=e41]:
+                  - term [ref=e42]: Split
+                  - definition [ref=e43]: 2,170 train · 465 val · 465 test
+                - generic [ref=e44]:
+                  - term [ref=e45]: Max length
+                  - definition [ref=e46]: 128 tokens
+                - generic [ref=e47]:
+                  - term [ref=e48]: Batch size
+                  - definition [ref=e49]: 8 (train) · 16 (eval)
+                - generic [ref=e50]:
+                  - term [ref=e51]: Learning rate
+                  - definition [ref=e52]: 2e-5 · AdamW (wd 0.01)
+                - generic [ref=e53]:
+                  - term [ref=e54]: Seed
+                  - definition [ref=e55]: "42"
+              - button "Training…" [disabled]:
+                - img
+                - text: Training…
+              - button "Reset" [ref=e70]:
+                - img
+                - text: Reset
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - img [ref=e74]
+              - text: Epoch 1/3 · step 96/272
+            - generic [ref=e78]: 12%
+        - generic [ref=e57]:
+          - generic [ref=e79]:
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: Train loss
+                - img [ref=e84]
+              - generic [ref=e87]: "0.890"
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - generic [ref=e91]: Val loss
+                - img [ref=e92]
+              - generic [ref=e96]: "0.904"
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - generic [ref=e100]: Val accuracy
+                - img [ref=e101]
+              - generic [ref=e109]: 55.1%
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - generic [ref=e113]: Val macro-F1
+                - img [ref=e114]
+              - generic [ref=e122]: "0.45"
+          - generic [ref=e123]:
+            - generic [ref=e125]:
+              - img [ref=e126]
+              - text: Loss curve
+            - generic [ref=e131]:
+              - img [ref=e132]:
+                - generic [ref=e137]:
+                  - generic [ref=e139]: "16"
+                  - generic [ref=e141]: "32"
+                  - generic [ref=e143]: "48"
+                  - generic [ref=e145]: "64"
+                  - generic [ref=e147]: "80"
+                  - generic [ref=e149]: "96"
+                - generic [ref=e151]:
+                  - generic [ref=e153]: "0.2"
+                  - generic [ref=e155]: "0.5"
+                  - generic [ref=e157]: "0.8"
+                  - generic [ref=e159]: "1.3"
+              - list [ref=e166]:
+                - listitem [ref=e167]:
+                  - img [ref=e168]
+                  - text: Train loss
+                - listitem [ref=e170]:
+                  - img [ref=e171]
+                  - text: Val loss
+          - generic [ref=e173]:
+            - generic [ref=e175]:
+              - img [ref=e176]
+              - text: Training log
+            - generic [ref=e179]:
+              - generic [ref=e180]: $ python train.py --model ProsusAI/finbert --epochs 3 --bs 8 --lr 2e-5
+              - generic [ref=e181]: Loaded Financial PhraseBank — 2170 train / 465 val / 465 test
+              - generic [ref=e182]: Tokenizing (max_len 128)… done. Starting fine-tuning on CPU.
+              - generic [ref=e183]: Epoch 1/3 | step 16/272 | loss 1.099 | lr 2.00e-5
+              - generic [ref=e184]: "↳ eval epoch 1: val_loss 0.904 · acc 55.1% · macroF1 0.45"
+              - generic [ref=e185]: Epoch 1/3 | step 32/272 | loss 1.056 | lr 2.00e-5
+              - generic [ref=e186]: Epoch 1/3 | step 48/272 | loss 1.024 | lr 2.00e-5
+              - generic [ref=e187]: Epoch 1/3 | step 64/272 | loss 0.950 | lr 2.00e-5
+              - generic [ref=e188]: Epoch 1/3 | step 80/272 | loss 0.910 | lr 2.00e-5
+              - generic [ref=e189]: Epoch 1/3 | step 96/272 | loss 0.890 | lr 2.00e-5
+    - region "Notifications alt+T"
+  - generic [ref=e190]: "96"

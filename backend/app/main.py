@@ -128,7 +128,7 @@ def simulate(
     ]
     params = {
         "threshold": threshold, "smoothing_window": smoothing_window,
-        "allow_short": allow_short, "initial_capital": initial_capital,
-        "transaction_cost_bps": transaction_cost_bps,
+        "allow_short": allow_short,
+        "initial_capital": initial_capital, "transaction_cost_bps": transaction_cost_bps,
     }
     return SimulateResponse(params=params, metrics=metrics, curve=curve)

@@ -61,10 +61,15 @@ export default function PriceChart({ curve }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-base">
-          <CandlestickChart className="h-4 w-4 text-primary" /> BTC price
-          <span className="ml-1 text-xs font-normal text-muted-foreground">
-            (orange) vs sentiment (blue)
+        <CardTitle className="flex flex-wrap items-center gap-2 text-base">
+          <CandlestickChart className="h-4 w-4 text-primary" /> Price &amp; sentiment
+          <span className="ml-auto flex items-center gap-3 text-xs font-normal text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#f7931a]" /> BTC price
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#3b82f6]" /> daily sentiment
+            </span>
           </span>
         </CardTitle>
       </CardHeader>

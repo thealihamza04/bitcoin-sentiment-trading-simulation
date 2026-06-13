@@ -1,0 +1,96 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]: BTC Sentiment Sim
+        - navigation [ref=e11]:
+          - link "Dashboard" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Training" [ref=e13] [cursor=pointer]:
+            - /url: /training
+          - link "Docs" [ref=e14] [cursor=pointer]:
+            - /url: /docs
+          - link "Case study" [ref=e15] [cursor=pointer]:
+            - /url: /case-study
+      - generic [ref=e16]:
+        - button "Sentiment tester" [ref=e17]:
+          - img
+          - generic [ref=e18]: Sentiment tester
+        - generic [ref=e19]:
+          - img
+          - generic [ref=e20]: model loaded
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - heading "Trading simulation" [level=1] [ref=e24]
+        - generic [ref=e25]: BTC-USD · 2021–2023
+      - paragraph [ref=e26]:
+        - text: Fine-tuned FinBERT
+        - img [ref=e27]
+        - text: daily signals
+        - img [ref=e29]
+        - text: backtest vs buy-and-hold
+    - generic [ref=e31]:
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e35]:
+            - img [ref=e36]
+            - text: Strategy
+            - img [ref=e37]
+          - generic:
+            - generic:
+              - button "Default" [disabled]
+              - button "Patient" [disabled]
+              - button "Twitchy" [disabled]
+              - button "Shorts on" [disabled]
+            - group [disabled]:
+              - generic:
+                - generic: Sentiment threshold
+                - generic: "0.10"
+                - generic:
+                  - slider [disabled]: "0.1"
+            - group [disabled]:
+              - generic:
+                - generic: Smoothing window
+                - generic: 3 d
+                - generic:
+                  - slider [disabled]: "3"
+            - group [disabled]:
+              - generic:
+                - generic: Transaction cost
+                - generic: 10 bps
+                - generic:
+                  - slider [disabled]: "10"
+            - generic:
+              - generic: Allow short positions
+              - switch [disabled]
+              - checkbox [disabled]
+            - generic:
+              - generic: Initial capital
+              - spinbutton [disabled]: "10000"
+            - paragraph: Changes apply live as you adjust them.
+            - button "Reset to defaults" [disabled]:
+              - img
+              - text: Reset to defaults
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - img [ref=e42]
+            - text: Running simulation…
+          - list [ref=e44]:
+            - listitem [ref=e45]:
+              - img [ref=e48]
+              - generic [ref=e51]: Sending data…
+            - listitem [ref=e52]:
+              - img [ref=e55]
+              - generic [ref=e67]: Model predicting
+            - listitem [ref=e68]:
+              - img [ref=e71]
+              - generic [ref=e73]: Building signals
+            - listitem [ref=e74]:
+              - img [ref=e77]
+              - generic [ref=e80]: Backtesting
+      - main [ref=e81]
+  - region "Notifications alt+T"

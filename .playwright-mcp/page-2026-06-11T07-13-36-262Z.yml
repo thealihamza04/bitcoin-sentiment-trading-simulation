@@ -1,0 +1,178 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - img [ref=e8]
+            - generic [ref=e10]: BTC Sentiment Sim
+          - navigation [ref=e11]:
+            - link "Dashboard" [ref=e12] [cursor=pointer]:
+              - /url: /
+            - link "Training" [ref=e13] [cursor=pointer]:
+              - /url: /training
+            - link "Docs" [ref=e14] [cursor=pointer]:
+              - /url: /docs
+            - link "Case study" [ref=e15] [cursor=pointer]:
+              - /url: /case-study
+        - generic [ref=e16]:
+          - button "Sentiment tester" [ref=e17]:
+            - img
+            - generic [ref=e18]: Sentiment tester
+          - generic [ref=e19]:
+            - img
+            - generic [ref=e20]: model loaded
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - heading "Trading simulation" [level=1] [ref=e24]
+          - generic [ref=e25]: BTC-USD · 2021–2023
+        - paragraph [ref=e26]:
+          - text: Fine-tuned FinBERT
+          - img [ref=e27]
+          - text: daily signals
+          - img [ref=e29]
+          - text: backtest vs buy-and-hold
+      - generic [ref=e31]:
+        - complementary [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e35]:
+              - img [ref=e36]
+              - text: Strategy
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - button "Default" [ref=e122]
+                - button "Patient" [ref=e123]
+                - button "Twitchy" [active] [ref=e124]
+                - button "Shorts on" [ref=e125]
+              - group [ref=e126]:
+                - generic [ref=e127]:
+                  - generic: Sentiment threshold
+                  - generic: "0.03"
+                  - slider [ref=e129]: "0.03"
+              - group [ref=e130]:
+                - generic [ref=e131]:
+                  - generic: Smoothing window
+                  - generic: 1 d
+                  - slider [ref=e133]: "1"
+              - group [ref=e134]:
+                - generic [ref=e135]:
+                  - generic: Transaction cost
+                  - generic: 10 bps
+                  - slider [ref=e137]: "10"
+              - generic [ref=e138]:
+                - generic [ref=e139]: Allow short positions
+                - switch [ref=e140]
+                - checkbox [ref=e141]
+              - generic [ref=e142]:
+                - generic [ref=e143]: Initial capital
+                - spinbutton [ref=e144]: "10000"
+              - paragraph [ref=e145]: Changes apply live as you adjust them.
+              - button "Reset to defaults" [ref=e146]:
+                - img
+                - text: Reset to defaults
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - img [ref=e331]
+              - text: Simulation complete
+            - list [ref=e44]:
+              - listitem [ref=e45]:
+                - img [ref=e334]
+                - generic [ref=e51]: Sending data
+              - listitem [ref=e52]:
+                - img [ref=e336]
+                - generic [ref=e67]: Model predicting
+              - listitem [ref=e68]:
+                - img [ref=e338]
+                - generic [ref=e73]: Building signals
+              - listitem [ref=e74]:
+                - img [ref=e340]
+                - generic [ref=e80]: Backtesting
+        - main [ref=e81]:
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e160]
+              - generic [ref=e162]: Buy & Hold won by 71.2pp
+              - generic [ref=e163]: $10,000 → $7,231 strategy · $14,352 B&H
+            - generic [ref=e164]:
+              - generic [ref=e167]:
+                - generic [ref=e168]:
+                  - generic [ref=e169]:
+                    - text: Strategy return
+                    - generic "How much money you made or lost by following the model's calls — the final score." [ref=e170]:
+                      - img [ref=e171]
+                  - img [ref=e174]
+                - generic [ref=e177]: "-27.7%"
+                - generic [ref=e178]:
+                  - text: B&H 43.5%
+                  - generic [ref=e179]: "-71.2pp"
+              - generic [ref=e182]:
+                - generic [ref=e183]:
+                  - generic [ref=e184]:
+                    - text: Sharpe ratio
+                    - generic "How smooth or scary the ride was to get there — the quality of the ride. Higher is better." [ref=e185]:
+                      - img [ref=e186]
+                  - img [ref=e189]
+                - generic [ref=e191]: "0.10"
+                - generic [ref=e192]:
+                  - text: B&H 0.51
+                  - generic [ref=e193]: "-0.40"
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]:
+                    - text: Max drawdown
+                    - generic "The worst peak-to-trough drop along the way — how much you'd have lost at the lowest point." [ref=e199]:
+                      - img [ref=e200]
+                  - img [ref=e203]
+                - generic [ref=e206]: "-71.5%"
+                - generic [ref=e207]:
+                  - text: B&H -76.6%
+                  - generic [ref=e208]: +5.2pp
+              - generic [ref=e211]:
+                - generic [ref=e212]:
+                  - generic [ref=e213]:
+                    - text: Trades
+                    - generic "How many buy/sell trades the model made, and the share of them that were profitable." [ref=e214]:
+                      - img [ref=e215]
+                  - img [ref=e218]
+                - generic [ref=e223]: "222"
+                - generic [ref=e224]: Win rate 43.0%
+            - generic [ref=e225]:
+              - tablist [ref=e226]:
+                - tab "Equity curve" [selected] [ref=e227]
+                - tab "Price & sentiment" [ref=e228]
+              - tabpanel "Equity curve" [ref=e229]:
+                - generic [ref=e230]:
+                  - generic [ref=e232]:
+                    - img [ref=e233]
+                    - text: Equity curve
+                    - generic [ref=e236]:
+                      - text: $7,231
+                      - generic [ref=e237]: vs $14,352 B&H
+                  - generic [ref=e238]:
+                    - generic [ref=e240]:
+                      - img [ref=e241]:
+                        - generic [ref=e545]:
+                          - generic [ref=e547]: Feb 2021
+                          - generic [ref=e549]: Aug 2021
+                          - generic [ref=e551]: Mar 2022
+                          - generic [ref=e553]: Oct 2022
+                          - generic [ref=e555]: May 2023
+                          - generic [ref=e557]: Dec 2023
+                        - generic [ref=e559]:
+                          - generic [ref=e561]: $0
+                          - generic [ref=e563]: $6,000
+                          - generic [ref=e565]: $12,000
+                          - generic [ref=e567]: $18,000
+                          - generic [ref=e569]: $24,000
+                      - list [ref=e304]:
+                        - listitem [ref=e305]:
+                          - img [ref=e306]
+                          - text: Strategy
+                        - listitem [ref=e308]:
+                          - img [ref=e309]
+                          - text: Buy & Hold
+                    - paragraph [ref=e311]: Green bands = model holding BTC · unshaded = sitting in cash · dashed line = starting capital
+    - region "Notifications alt+T"
+  - generic [ref=e312]: Apr

@@ -1,0 +1,392 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "BTC Sentiment Sim" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e10]: BTC Sentiment Sim
+      - navigation [ref=e11]:
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Training" [ref=e13] [cursor=pointer]:
+          - /url: /training
+        - link "Case study" [ref=e14] [cursor=pointer]:
+          - /url: /case-study
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: NLP
+        - generic [ref=e20]: FinBERT
+        - generic [ref=e21]: Backtesting
+        - generic [ref=e22]: FastAPI
+        - generic [ref=e23]: React
+        - generic [ref=e24]: PyTorch
+      - heading "Can reading the news beat holding Bitcoin?" [level=1] [ref=e25]
+      - paragraph [ref=e26]: An end-to-end NLP project that fine-tunes a financial language model to turn crypto headlines into trading decisions — then rigorously and honestly measures whether it works.
+      - img "Dashboard" [ref=e27]
+      - generic [ref=e28]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Model
+          - generic [ref=e32]: FinBERT (fine-tuned)
+        - generic [ref=e34]:
+          - generic [ref=e35]: Headlines scored
+          - generic [ref=e36]: ~14,000
+        - generic [ref=e38]:
+          - generic [ref=e39]: Test period
+          - generic [ref=e40]: 2021 – 2023
+        - generic [ref=e42]:
+          - generic [ref=e43]: Asset
+          - generic [ref=e44]: BTC-USD (daily)
+    - generic [ref=e46]:
+      - paragraph [ref=e47]: TL;DR
+      - paragraph [ref=e48]: "I fine-tuned FinBERT to score Bitcoin news sentiment, converted daily sentiment into a long/flat trading rule, and backtested it on three years of real BTC prices with no look-ahead. The result is an honest, interactive system: with default settings the strategy did not beat buy-and-hold — which is a valid finding, and the dashboard lets you explore when sentiment helps and when it doesn't."
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - img [ref=e52]
+          - text: Background
+        - heading "Why this question matters" [level=2] [ref=e56]
+      - generic [ref=e57]:
+        - paragraph [ref=e58]: "“The news moves the market” is repeated constantly in finance and crypto, but it's rarely tested with a reproducible, no-look-ahead methodology. Sentiment analysis is a classic NLP task; trading is a natural, measurable application. Combining them produces a project where the model's output has a concrete, quantifiable consequence: profit or loss."
+        - paragraph [ref=e59]:
+          - text: The goal was not to build a money printer, but to build the
+          - emphasis [ref=e60]: apparatus
+          - text: to test the claim — and to be honest about what it finds.
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - img [ref=e64]
+          - text: Approach
+        - heading "A five-step pipeline" [level=2] [ref=e68]
+      - list [ref=e70]:
+        - listitem [ref=e71]:
+          - generic [ref=e72]: "1"
+          - generic [ref=e73]:
+            - generic [ref=e74]: Acquire data.
+            - text: Real BTC prices + thousands of dated crypto headlines + a labelled sentiment dataset.
+        - listitem [ref=e75]:
+          - generic [ref=e76]: "2"
+          - generic [ref=e77]:
+            - generic [ref=e78]: Fine-tune FinBERT.
+            - text: Train a finance-domain BERT to classify text as negative / neutral / positive.
+        - listitem [ref=e79]:
+          - generic [ref=e80]: "3"
+          - generic [ref=e81]:
+            - generic [ref=e82]: Score sentiment.
+            - text: Apply the model to every headline → a continuous daily sentiment score.
+        - listitem [ref=e83]:
+          - generic [ref=e84]: "4"
+          - generic [ref=e85]:
+            - generic [ref=e86]: Generate signals.
+            - text: Turn smoothed daily sentiment into a long / flat (or short) position via a threshold.
+        - listitem [ref=e87]:
+          - generic [ref=e88]: "5"
+          - generic [ref=e89]:
+            - generic [ref=e90]: Backtest.
+            - text: Replay real prices day-by-day with transaction costs, comparing to buy-and-hold.
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - img [ref=e94]
+          - text: The data
+        - heading "Sources, scale & alignment" [level=2] [ref=e98]
+      - generic [ref=e99]:
+        - paragraph [ref=e100]: "Three datasets feed three different phases of the pipeline:"
+        - table [ref=e102]:
+          - rowgroup [ref=e103]:
+            - row "Dataset Source & scale Purpose Phase" [ref=e104]:
+              - columnheader "Dataset" [ref=e105]
+              - columnheader "Source & scale" [ref=e106]
+              - columnheader "Purpose" [ref=e107]
+              - columnheader "Phase" [ref=e108]
+          - rowgroup [ref=e109]:
+            - row "Financial PhraseBank ChanceFocus/flare-fpb (HF) · ~3,100 labelled sentences Fine-tune & evaluate FinBERT on 3-class sentiment (neg / neu / pos). Model training" [ref=e110]:
+              - cell "Financial PhraseBank" [ref=e111]
+              - cell "ChanceFocus/flare-fpb (HF) · ~3,100 labelled sentences" [ref=e112]
+              - cell "Fine-tune & evaluate FinBERT on 3-class sentiment (neg / neu / pos)." [ref=e113]
+              - cell "Model training" [ref=e114]:
+                - generic [ref=e115]: Model training
+            - row "Bitcoin news headlines FadedCalendula/cryptonews_srp_data (HF) · ~14,000 dated headlines, 2021–2023 Scored by the model into a daily sentiment signal — the text that drives the strategy. Sentiment scoring" [ref=e116]:
+              - cell "Bitcoin news headlines" [ref=e117]
+              - cell "FadedCalendula/cryptonews_srp_data (HF) · ~14,000 dated headlines, 2021–2023" [ref=e118]
+              - cell "Scored by the model into a daily sentiment signal — the text that drives the strategy." [ref=e119]
+              - cell "Sentiment scoring" [ref=e120]:
+                - generic [ref=e121]: Sentiment scoring
+            - row "BTC-USD OHLCV yfinance · daily prices, 2021–2023 Provide the real returns the position earns, plus the buy-and-hold benchmark. Backtesting" [ref=e122]:
+              - cell "BTC-USD OHLCV" [ref=e123]
+              - cell "yfinance · daily prices, 2021–2023" [ref=e124]
+              - cell "Provide the real returns the position earns, plus the buy-and-hold benchmark." [ref=e125]
+              - cell "Backtesting" [ref=e126]:
+                - generic [ref=e127]: Backtesting
+        - paragraph [ref=e128]: Headlines were normalised (one headline per line, whitespace cleaned), parsed to dates, and filtered to the 2021–2023 price window. Multiple headlines on the same day are aggregated into a single daily sentiment. The full text set is scored once and cached to disk, so changing strategy parameters never re-runs the model — simulations return in ~0.2 seconds.
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - img [ref=e132]
+          - text: The model
+        - heading "Fine-tuning FinBERT" [level=2] [ref=e140]
+      - generic [ref=e141]:
+        - paragraph [ref=e142]:
+          - text: FinBERT is BERT pre-trained on financial text. I fine-tuned it for 3-class sentiment using the HuggingFace
+          - code [ref=e143]: Trainer
+          - text: on the
+          - code [ref=e144]: ChanceFocus/flare-fpb
+          - text: "Financial PhraseBank (3,100 sentences), with a stratified 70 / 15 / 15 split (2,170 train · 465 val · 465 test):"
+        - figure "FinBERT (BERT-base) fine-tuned with a 3-class sequence-classification head, reduced to a single sentiment score." [ref=e145]:
+          - img "FinBERT sequence-classification architecture" [ref=e146]:
+            - generic [ref=e147]:
+              - generic [ref=e149]: Input — BTC headline (raw text)
+              - generic [ref=e150]: “Bitcoin soars to a new high”
+            - generic [ref=e151]:
+              - generic [ref=e153]: WordPiece tokenizer
+              - generic [ref=e154]: "[CLS] bit ##coin soars [SEP] · max 128"
+            - generic [ref=e155]:
+              - generic [ref=e157]: Embeddings (768-d)
+              - generic [ref=e158]: token + position + segment
+            - generic [ref=e159]:
+              - generic [ref=e161]: 12× Transformer encoder
+              - generic [ref=e162]: BERT-base · 12 heads · hidden 768
+            - generic [ref=e163]:
+              - generic [ref=e165]: "[CLS] pooled output"
+              - generic [ref=e166]: 768-d sentence vector
+            - generic [ref=e169]: Dropout (p = 0.1)
+            - generic [ref=e170]:
+              - generic [ref=e172]: Linear classifier head
+              - generic [ref=e173]: 768 → 3 logits
+            - generic [ref=e174]:
+              - generic [ref=e176]: Softmax
+              - generic [ref=e177]: P(neg) · P(neu) · P(pos)
+            - generic [ref=e178]:
+              - generic [ref=e180]: Sentiment score
+              - generic [ref=e181]: P(pos) − P(neg) ∈ [−1, +1]
+            - generic [ref=e183]: Inside one encoder layer
+            - generic [ref=e186]: Multi-Head Self-Attention · 12 heads
+            - generic [ref=e189]: Add & Norm
+            - generic [ref=e192]: Feed-Forward · 768→3072→768
+            - generic [ref=e195]: Add & Norm
+          - generic [ref=e196]: FinBERT (BERT-base) fine-tuned with a 3-class sequence-classification head, reduced to a single sentiment score.
+        - code [ref=e198]: base model ProsusAI/finbert task sequence classification (3 labels) max length 128 tokens epochs 1 (CPU-adjusted; best model by val macro-F1) train batch 8 eval batch 16 learning rate 2e-5 optimizer AdamW (weight decay 0.01) seed 42
+        - generic [ref=e199]:
+          - img [ref=e200]
+          - generic [ref=e202]:
+            - text: Curious what this run looked like?
+            - link "Watch the training simulation →" [ref=e203] [cursor=pointer]:
+              - /url: /training
+        - paragraph [ref=e204]: "On the held-out test set (465 sentences it never saw during training):"
+        - generic [ref=e205]:
+          - generic [ref=e207]:
+            - generic [ref=e208]: Accuracy
+            - generic [ref=e209]: 87.5%
+          - generic [ref=e211]:
+            - generic [ref=e212]: Macro-F1
+            - generic [ref=e213]: "0.84"
+          - generic [ref=e215]:
+            - generic [ref=e216]: Weighted-F1
+            - generic [ref=e217]: "0.87"
+          - generic [ref=e219]:
+            - generic [ref=e220]: Test loss
+            - generic [ref=e221]: "0.36"
+        - paragraph [ref=e222]: "Because the labels are imbalanced (~60% neutral / 28% positive / 12% negative), I report macro-F1 — which weights every class equally — not just raw accuracy. Per-class breakdown:"
+        - table [ref=e224]:
+          - rowgroup [ref=e225]:
+            - row "Class Precision Recall F1 Support" [ref=e226]:
+              - columnheader "Class" [ref=e227]
+              - columnheader "Precision" [ref=e228]
+              - columnheader "Recall" [ref=e229]
+              - columnheader "F1" [ref=e230]
+              - columnheader "Support" [ref=e231]
+          - rowgroup [ref=e232]:
+            - row "negative 0.76 0.82 0.79 57" [ref=e233]:
+              - cell "negative" [ref=e234]
+              - cell "0.76" [ref=e235]
+              - cell "0.82" [ref=e236]
+              - cell "0.79" [ref=e237]
+              - cell "57" [ref=e238]
+            - row "neutral 0.91 0.93 0.92 279" [ref=e239]:
+              - cell "neutral" [ref=e240]
+              - cell "0.91" [ref=e241]
+              - cell "0.93" [ref=e242]
+              - cell "0.92" [ref=e243]
+              - cell "279" [ref=e244]
+            - row "positive 0.86 0.78 0.82 129" [ref=e245]:
+              - cell "positive" [ref=e246]
+              - cell "0.86" [ref=e247]
+              - cell "0.78" [ref=e248]
+              - cell "0.82" [ref=e249]
+              - cell "129" [ref=e250]
+            - row "macro avg 0.84 0.85 0.84 465" [ref=e251]:
+              - cell "macro avg" [ref=e252]
+              - cell "0.84" [ref=e253]
+              - cell "0.85" [ref=e254]
+              - cell "0.84" [ref=e255]
+              - cell "465" [ref=e256]
+        - paragraph [ref=e257]: "Confusion matrix (rows = true label, columns = prediction; green diagonal = correct):"
+        - table [ref=e259]:
+          - rowgroup [ref=e260]:
+            - row "Predicted" [ref=e261]:
+              - columnheader [ref=e262]
+              - columnheader "Predicted" [ref=e263]
+            - row "neg neu pos" [ref=e264]:
+              - columnheader [ref=e265]
+              - columnheader "neg" [ref=e266]
+              - columnheader "neu" [ref=e267]
+              - columnheader "pos" [ref=e268]
+          - rowgroup [ref=e269]:
+            - row "neg 47 7 3" [ref=e270]:
+              - rowheader "neg" [ref=e271]
+              - cell "47" [ref=e272]
+              - cell "7" [ref=e273]
+              - cell "3" [ref=e274]
+            - row "neu 7 259 13" [ref=e275]:
+              - rowheader "neu" [ref=e276]
+              - cell "7" [ref=e277]
+              - cell "259" [ref=e278]
+              - cell "13" [ref=e279]
+            - row "pos 8 20 101" [ref=e280]:
+              - rowheader "pos" [ref=e281]
+              - cell "8" [ref=e282]
+              - cell "20" [ref=e283]
+              - cell "101" [ref=e284]
+        - paragraph [ref=e285]:
+          - text: "The model is strongest on the majority neutral class (259/279 correct) and weakest on the rarest negative class — exactly what the imbalance predicts. Quick live sanity check:"
+          - emphasis [ref=e286]: “revenue exceeded expectations”
+          - text: → positive (0.76),
+          - emphasis [ref=e287]: “operating profit fell 20%”
+          - text: → negative (0.93),
+          - emphasis [ref=e288]: “CEO will speak at a conference”
+          - text: → neutral (0.97).
+        - paragraph [ref=e289]: "For each headline the model outputs class probabilities, reduced to a single score:"
+        - code [ref=e291]: "sentiment = P(positive) − P(negative) # in [-1, +1]"
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - generic [ref=e294]:
+          - img [ref=e295]
+          - text: The strategy
+        - heading "From sentiment to a position" [level=2] [ref=e296]
+      - generic [ref=e297]:
+        - paragraph [ref=e298]: "Daily sentiment is smoothed with a rolling mean (to cut noise), then mapped to a position:"
+        - code [ref=e300]: "s = rolling_mean(daily_sentiment, window) if s > threshold: position = +1 # long (hold BTC) elif s < -threshold: position = -1 # short (if enabled) else 0 else: position = hold previous"
+        - paragraph [ref=e301]: Threshold, smoothing window, and whether shorting is allowed are all tunable live in the dashboard.
+    - generic [ref=e302]:
+      - generic [ref=e303]:
+        - generic [ref=e304]:
+          - img [ref=e305]
+          - text: Methodology
+        - heading "An honest backtest" [level=2] [ref=e308]
+      - generic [ref=e309]:
+        - paragraph [ref=e310]: "The simulation is deliberately strict to avoid the classic ways backtests lie:"
+        - generic [ref=e311]:
+          - generic [ref=e312]:
+            - text: No look-ahead — Today's sentiment decides today's position, which earns
+            - emphasis [ref=e313]: tomorrow's
+            - text: return. The model never sees information from the future.
+          - generic [ref=e314]: Transaction costs — A configurable cost (basis points) is charged every time the position changes, penalising over-trading.
+          - generic [ref=e315]: Benchmark — Performance is always shown against buy-and-hold — the honest bar any strategy must clear.
+          - generic [ref=e316]: Metrics — Total return, CAGR, Sharpe ratio (risk-adjusted), max drawdown (worst peak-to-trough), win rate, and trade count.
+    - generic [ref=e317]:
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - img [ref=e320]
+          - text: Results
+        - heading "What actually happened" [level=2] [ref=e323]
+      - generic [ref=e324]:
+        - paragraph [ref=e325]: "With default settings over 2021–2023, the strategy underperformed buy-and-hold:"
+        - generic [ref=e326]:
+          - generic [ref=e328]:
+            - generic [ref=e329]: Strategy return
+            - generic [ref=e330]: ≈ −4%
+          - generic [ref=e332]:
+            - generic [ref=e333]: Sharpe
+            - generic [ref=e334]: "0.29"
+          - generic [ref=e336]:
+            - generic [ref=e337]: Max drawdown
+            - generic [ref=e338]: −73%
+          - generic [ref=e340]:
+            - generic [ref=e341]: Trades
+            - generic [ref=e342]: "19"
+        - paragraph [ref=e343]: "Why? A few honest reasons:"
+        - list [ref=e344]:
+          - listitem [ref=e345]: Daily headline sentiment is a weak, noisy signal — much news is already priced in by the time it's published.
+          - listitem [ref=e346]: FinBERT was trained on formal financial sentences, so short, slangy crypto headlines are partly out-of-distribution.
+          - listitem [ref=e347]: Bitcoin's strong multi-year trend is hard to beat by sitting in cash during dips.
+        - paragraph [ref=e348]: Crucially, the framework lets you measure this rather than guess — and tuning the threshold, smoothing, or enabling shorts changes the outcome, which is exactly the kind of exploration the dashboard is for.
+    - generic [ref=e349]:
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - img [ref=e352]
+          - text: The build
+        - heading "A 3-tier architecture" [level=2] [ref=e356]
+      - generic [ref=e357]:
+        - code [ref=e359]: COLAB (train, once) ──model──▶ FASTAPI (backend) ──JSON──▶ REACT (frontend) GPU files inference + sim HTTP dashboard
+        - generic [ref=e360]:
+          - generic [ref=e361]: Training (Colab) — Runs once on a free GPU, fine-tunes FinBERT, and exports the model. Keeps heavy compute off the local machine.
+          - generic [ref=e362]:
+            - text: Backend (FastAPI) — Loads the model, serves
+            - code [ref=e363]: /predict
+            - text: ","
+            - code [ref=e364]: /simulate
+            - text: ", and"
+            - code [ref=e365]: /prices
+            - text: ; caches scored sentiment for instant simulations.
+          - generic [ref=e366]: Frontend (React + Vite) — Tailwind + shadcn/ui dashboard with Recharts and TradingView charts, TanStack Query for data, and a stacked sentiment-tester dialog.
+    - generic [ref=e367]:
+      - generic [ref=e368]:
+        - generic [ref=e369]:
+          - img [ref=e370]
+          - text: Engineering
+        - heading "Challenges I hit (and solved)" [level=2] [ref=e372]
+      - generic [ref=e374]:
+        - generic [ref=e375]: CPU-only + throttled network — The dev machine had no GPU and a slow link to HuggingFace's CDN. Fixed by training in Colab, using the CPU PyTorch wheel, routing model downloads through a mirror, and pre-caching results.
+        - generic [ref=e376]:
+          - text: Library version drift — Newer
+          - code [ref=e377]: datasets
+          - text: /
+          - code [ref=e378]: transformers
+          - text: dropped script datasets and changed tokenizer loading; resolved by switching to a parquet dataset mirror and supplying the fast-tokenizer file.
+        - generic [ref=e379]: Headless UI verification — Used a headless browser to catch real bugs (a frozen Base-UI slider, mobile navbar overflow) instead of eyeballing.
+    - generic [ref=e380]:
+      - generic [ref=e381]:
+        - generic [ref=e382]:
+          - img [ref=e383]
+          - text: Honesty
+        - heading "Limitations" [level=2] [ref=e385]
+      - list [ref=e387]:
+        - listitem [ref=e388]: It's a backtest on history — not live trading, and not a prediction of the future.
+        - listitem [ref=e389]: "Simplified execution: all-in / all-out positions, no slippage, fills at daily close."
+        - listitem [ref=e390]: News coverage isn't perfectly uniform across every day.
+        - listitem [ref=e391]:
+          - code [ref=e392]: ProsusAI/finbert
+          - text: was originally trained on Financial PhraseBank, so re-fine-tuning mainly demonstrates the pipeline.
+    - generic [ref=e393]:
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - img [ref=e396]
+          - text: Next
+        - heading "Future work" [level=2] [ref=e401]
+      - list [ref=e403]:
+        - listitem [ref=e404]: Live mode — real-time prices + a news API for a current sentiment signal.
+        - listitem [ref=e405]: Better signals — volume-weighted sentiment, per-source weighting, or combining with price features.
+        - listitem [ref=e406]: Parameter search — automatically find the best threshold/window per period.
+        - listitem [ref=e407]: More assets — extend beyond BTC to stocks or an ETH comparison.
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - generic [ref=e410]:
+          - img [ref=e411]
+          - text: Takeaways
+        - heading "What this demonstrates" [level=2] [ref=e413]
+      - list [ref=e415]:
+        - listitem [ref=e416]: "Shipping a complete ML product end-to-end: data → model → API → UI."
+        - listitem [ref=e417]: Rigorous, no-look-ahead evaluation over cherry-picked results.
+        - listitem [ref=e418]: Clean separation across three independently testable tiers.
+        - listitem [ref=e419]: Honest reporting — a negative result, clearly explained, is still a real result.
+    - generic [ref=e420]:
+      - generic [ref=e421]:
+        - paragraph [ref=e422]: Try it yourself
+        - paragraph [ref=e423]: Tune the strategy and watch it backtest live.
+      - button "Training sim" [ref=e424] [cursor=pointer]:
+        - img
+        - text: Training sim
+      - button "Open dashboard" [ref=e425] [cursor=pointer]:
+        - text: Open dashboard
+        - img
+  - region "Notifications alt+T"
