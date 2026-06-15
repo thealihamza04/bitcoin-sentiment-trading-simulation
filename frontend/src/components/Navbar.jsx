@@ -9,6 +9,7 @@ const LINKS = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/training", label: "Training" },
   { to: "/case-study", label: "Case study" },
+  { to: "/slides", label: "Slides" },
 ];
 
 export default function Navbar({ children }) {

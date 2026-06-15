@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import CaseStudy from "./pages/CaseStudy";
 import TrainingSim from "./pages/TrainingSim";
 import HowItWorks from "./pages/HowItWorks";
+import Slides from "./pages/Slides";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/training" element={<TrainingSim />} />
         <Route path="/case-study" element={<CaseStudy />} />
+        <Route path="/slides" element={<Slides />} />
       </Routes>
     </BrowserRouter>
   );

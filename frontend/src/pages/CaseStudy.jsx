@@ -342,6 +342,80 @@ export default function CaseStudy() {
         </Section>
 
         <Section id="model" icon={Brain} kicker="The model" title="Fine-tuning FinBERT">
+          {/* BERT → FinBERT background */}
+          <p>
+            <span className="text-foreground">BERT</span> (Bidirectional Encoder Representations from
+            Transformers) is a language model developed by Google in 2018. Unlike earlier models that
+            read text left-to-right or right-to-left, BERT reads the{" "}
+            <span className="text-foreground">entire sentence at once, in both directions
+            simultaneously</span> — hence "bidirectional". It was pre-trained on Wikipedia +
+            BookCorpus, giving it a strong general understanding of English.
+          </p>
+
+          <p>General BERT struggles with financial language because the vocabulary and implied meaning differ significantly from everyday text:</p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-border/60 text-muted-foreground">
+                  <th className="py-2 pr-3 text-left font-medium">Sentence</th>
+                  <th className="py-2 pr-3 text-left font-medium">General meaning</th>
+                  <th className="py-2 text-left font-medium">Financial meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["\"Earnings beat expectations\"", "vague", "Very positive — stock likely to rise"],
+                  ["\"The company is underwater\"", "literal water", "Very negative — company is insolvent"],
+                  ["\"Shares fell off a cliff\"", "geography", "Very negative — rapid price crash"],
+                  ["\"The stock saw heavy selling\"", "neutral-ish", "Negative — bearish signal"],
+                ].map(([s, g, f]) => (
+                  <tr key={s} className="border-b border-border/40 align-top">
+                    <td className="py-2 pr-3 font-mono text-foreground">{s}</td>
+                    <td className="py-2 pr-3">{g}</td>
+                    <td className="py-2 text-foreground">{f}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <span className="text-foreground">FinBERT</span>, built by{" "}
+            <span className="text-foreground">ProsusAI</span>, fixes this by taking the original BERT
+            weights and continuing pre-training on ~4.9 billion tokens of financial domain text:
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-border/60 text-muted-foreground">
+                  <th className="py-2 pr-3 text-left font-medium">Source</th>
+                  <th className="py-2 pr-3 text-left font-medium">Description</th>
+                  <th className="py-2 text-left font-medium">Scale</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Financial News", "Reuters and Bloomberg financial news articles", "~367k articles"],
+                  ["Earnings Call Transcripts", "Quarterly earnings calls from public companies", "~2,500 transcripts"],
+                  ["SEC Filings", "10-K and 10-Q regulatory filings from US public companies", "~5,000 filings"],
+                ].map(([src, desc, scale]) => (
+                  <tr key={src} className="border-b border-border/40 align-top">
+                    <td className="py-2 pr-3 font-medium text-foreground">{src}</td>
+                    <td className="py-2 pr-3">{desc}</td>
+                    <td className="py-2">{scale}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p>
+            FinBERT outputs a <span className="text-foreground">768-dimensional dense vector</span> representing
+            the meaning of a sentence. That vector alone doesn't say "positive" or "negative" — it's a
+            rich numerical representation. To get sentiment classification, a small{" "}
+            <span className="text-foreground">linear classification head</span> is added on top, mapping
+            768 dimensions down to 3 logits (negative / neutral / positive).
+          </p>
+
           <p>
             <span className="text-foreground">FinBERT</span> is BERT pre-trained on financial text. I
             fine-tuned it for 3-class sentiment using the HuggingFace <code className="rounded bg-secondary px-1 text-foreground">Trainer</code> on
@@ -349,8 +423,6 @@ export default function CaseStudy() {
             PhraseBank (3,100 sentences), with a stratified 70 / 15 / 15 split
             (<span className="text-foreground">2,170 train · 465 val · 465 test</span>):
           </p>
-
-          <ModelArchitecture />
 
           <Code>{`base model      ProsusAI/finbert
 task            sequence classification (3 labels)
