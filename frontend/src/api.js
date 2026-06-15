@@ -24,3 +24,6 @@ export const runSimulation = (params) =>
 
 export const predictSentiment = (text) =>
   client.post("/predict", { text }).then((r) => r.data);
+
+export const runBrokerSim = (payload) =>
+  client.post("/simulate/brokers", payload).then((r) => r.data);

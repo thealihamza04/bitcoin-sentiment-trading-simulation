@@ -1,7 +1,7 @@
 // TanStack Query hooks — encapsulate loading/error/caching for each endpoint.
 import { useEffect, useState } from "react";
 import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
-import { getHealth, predictSentiment, runSimulation } from "./api";
+import { getHealth, predictSentiment, runBrokerSim, runSimulation } from "./api";
 
 export function useHealth() {
   return useQuery({
@@ -26,6 +26,10 @@ export function useSimulation(params, enabled) {
 
 export function usePredict() {
   return useMutation({ mutationFn: predictSentiment });
+}
+
+export function useBrokerSim() {
+  return useMutation({ mutationFn: runBrokerSim });
 }
 
 // Debounce a fast-changing value (e.g. slider params) before it drives a request.
